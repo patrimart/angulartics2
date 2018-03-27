@@ -51,6 +51,7 @@
     "@types/google.analytics": "^0.0.38",
     "@types/jasmine": "^2.8.6",
     "@types/jasminewd2": "^2.0.3",
+    "@types/mixpanel": "^2.14.0",
     "@types/node": "^9.6.0",
     "@types/segment-analytics": "^0.0.28",
     "codelyzer": "^4.2.1",

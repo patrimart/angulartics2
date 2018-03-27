@@ -456,6 +456,10 @@
   dependencies:
     "@types/jasmine" "*"
 
+"@types/mixpanel@^2.14.0":
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/@types/mixpanel/-/mixpanel-2.14.0.tgz#ecca57f7f9fa18eb4e8096bd92a6afffd1511acc"
+
 "@types/node@*", "@types/node@^9.6.0":
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.0.tgz#d3480ee666df9784b1001a1872a2f6ccefb6c2d7"
@@ -4532,6 +4536,13 @@ https-proxy-agent@1, https-proxy-agent@^1.0.0:
     debug "2"
     extend "3"
 
+https-proxy-agent@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.1.1.tgz#a7ce4382a1ba8266ee848578778122d491260fd9"
+  dependencies:
+    agent-base "^4.1.0"
+    debug "^3.1.0"
+
 https-proxy-agent@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.2.0.tgz#7fbba856be8cd677986f42ebd3664f6317257887"
@@ -6055,6 +6066,12 @@ mixin-object@^2.0.1:
   dependencies:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
+
+mixpanel@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/mixpanel/-/mixpanel-0.9.0.tgz#e13b8e71a30deafe5dafa221eab73d0adb747944"
+  dependencies:
+    https-proxy-agent "2.1.1"
 
 mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   version "0.5.1"

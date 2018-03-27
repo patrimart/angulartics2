@@ -8,10 +8,11 @@
 __homepage__: [mixpanel.com](https://mixpanel.com/)  
 __docs__: [mixpanel.com/help/reference/javascript](https://mixpanel.com/help/reference/javascript)  
 __import__: `import { Angulartics2Mixpanel } from 'angulartics2/mixpanel';`  
+__import async__: `import { Angulartics2MixpanelAsync } from 'angulartics2/mixpanel';`  
 
 ## Setup
 1. Add tracking code [provided by Mixpanel](https://mixpanel.com/help/reference/javascript) to right above the header closing tag ``</header>``
-2. [Setup Angulartics](https://github.com/angulartics/angulartics2/tree/next#installation) using `Angulartics2Mixpanel`
+2. [Setup Angulartics](https://github.com/angulartics/angulartics2/tree/next#installation) using `Angulartics2Mixpanel` or `Angulartics2MixpanelAsync`
 
 ## Integrating with NgRx:
 You have a chance to unburden the integration process if your system is using NgRx. Specifically, we can reuse the existing actions in our application and use effects to catch and dispatch a mixpanel action accordingly.    
@@ -87,5 +88,40 @@ export class MixpanelEffects {
       this.angulartics2Mixpanel.eventTrack(action.payload.action, action.payload.properties);
     });
   ...
+}
+```
+
+## Using Angulartics2MixpanelAsync
+
+This alternate provider defers Mixpanel initialization, allowing the app to perform any async tasks (such as fetching a Mixpanel token). All events before initialization will be buffered and sent immediately after.
+
+The setup of `Angulartics2MixpanelAsync` is slightly different. You can pass some setup options during import.
+
+```angular2html
+@NgModule({
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(ROUTES),
+
+    // added to imports
+    Angulartics2Module.forRoot([Angulartics2MixpanelAsync.setup(options)]),
+  ],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+```
+
+The `MixpanelAsyncOptions` interface (passed in the `setup` method):
+  - `timeoutMs: number` - (default: 30000) The buffer time in milliseconds allowed for Mixpanel init.
+  - `initToken: string` - Include your Mixpanel token to init ASAP during service setup.
+  - `config: Mixpanel.Config` - Mixpanel config options (see Mixpanel's documentation).
+  - `libraryName: string` - Mixpanel library name option (see Mixpanel's documentation).
+
+The `Angulartics2MixpanelAsync` service also allows you to initialize Mixpanel via a class method at any time (like in an app_init Effect). 
+```angular2html
+class MyComponent {
+  constructor(private mixpanel: Angulartics2MixpanelAsync) {
+    this.mixpanel.init(token[, config, libraryName]);
+  }
 }
 ```

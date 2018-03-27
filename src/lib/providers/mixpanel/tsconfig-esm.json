@@ -6,7 +6,10 @@
     "declaration": false,
     "removeComments": true
   },
-  "files": ["angulartics2-mixpanel.ts"],
+  "files": [
+    "angulartics2-mixpanel.ts",
+    "angulartics2-mixpanel-async.ts"
+  ],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
